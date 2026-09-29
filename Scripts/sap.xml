@@ -1,0 +1,26 @@
+<ROSETTASCRIPTS>
+    <SCOREFXNS>
+        <ScoreFunction name="sfxn" weights="ref2015"/>
+    </SCOREFXNS>
+
+    <SIMPLE_METRICS>
+        <SapScoreMetric name="sap_total"/>
+        <PerResidueSapScoreMetric
+            name="sap_perres"
+            custom_type="sapbf"
+            output_as_pdb_nums="true"/>
+    </SIMPLE_METRICS>
+
+    <MOVERS>
+        <RunSimpleMetrics
+            name="run_sap"
+            metrics="sap_total,sap_perres"
+            metric_to_bfactor="sapbf"/>
+    </MOVERS>
+
+    <PROTOCOLS>
+        <Add mover_name="run_sap"/>
+    </PROTOCOLS>
+
+    <OUTPUT scorefxn="sfxn"/>
+</ROSETTASCRIPTS>
